@@ -1,5 +1,7 @@
 # Go TODO API チュートリアル
 
+`repositories`のテスト部分のリファクタリングをしておらず、今は機能しない。
+
 ## 取り組んだ記事
 
 - [Go初心者のためのTODO APIハンズオン 前編](https://qiita.com/aaaasahi_17/items/673bc8bd5b5579aed28a)
