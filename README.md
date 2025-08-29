@@ -19,6 +19,8 @@ APIの起動
 go run main.go
 ```
 
+どうせ`docker-compose.yml`にもがっつり書いてあるので、`.env`もプッシュしておきます。
+
 ## TODOのデータ構造
 
 ```go
