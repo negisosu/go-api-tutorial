@@ -1,0 +1,31 @@
+package repositories
+
+import (
+	"fmt"
+	"log"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
+)
+
+// DB接続のための情報
+const (
+	dbUser     = "root"
+	dbPassword = "password"
+	dbHost     = "127.0.0.1"
+	dbPort     = "3306"
+	dbName     = "todo_db"
+)
+
+func ConnectDB() (db *sqlx.DB, err error) {
+	// DBの接続
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", dbUser, dbPassword, dbHost, dbPort, dbName)
+
+	db, err = sqlx.Connect("mysql", dsn)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return
+}

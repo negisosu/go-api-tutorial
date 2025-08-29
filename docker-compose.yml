@@ -1,0 +1,27 @@
+services:
+  mysql:
+    image: 'mysql:8.0'
+    platform: linux/arm64/v8
+    container_name: 'go-todo-db'
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: password
+    command: ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+      - '3306:3306'
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+      - type: bind
+        source: ./init.sql
+        target: /docker-entrypoint-initdb.d/init.sql
+    networks:
+      - "mysql_network"
+
+volumes:
+  mysql_data:
+
+networks:
+  mysql_network:
